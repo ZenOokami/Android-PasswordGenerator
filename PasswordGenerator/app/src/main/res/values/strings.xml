@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">PasswordGenerator</string>
     <string name="action_settings">Settings</string>
+    <string name="generate_password">Generate Password</string>
+    <string name="numbers">Numbers</string>
+    <string name="lowers">Lowercase</string>
+    <string name="uppers">Uppercase</string>
+    <string name="specials">Special Items</string>
 </resources>
