@@ -1,3 +1,9 @@
+/* Designed to be an open project to help create a base for future app development.
+*  For support in documentation of this project please contact:
+*       Support@EssenceOfZen.org
+*
+*
+* */
 package org.essenceofzen.passwordgenerator;
 
 import android.os.Bundle;
@@ -73,4 +79,5 @@ public class PasswordGeneratorActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }
