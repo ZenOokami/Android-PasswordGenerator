@@ -6,4 +6,6 @@
     <string name="lowers">Lowercase</string>
     <string name="uppers">Uppercase</string>
     <string name="specials">Special Items</string>
+    <string name="drawer_open">Drawer Open</string>
+    <string name="drawer_close">Drawer Close</string>
 </resources>
