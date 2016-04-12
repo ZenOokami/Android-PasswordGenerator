@@ -23,6 +23,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -37,8 +38,7 @@ public class PasswordGeneratorActivity extends AppCompatActivity {
     public String getDate(){
         // Calendar Date stuff
         Calendar date = Calendar.getInstance();
-        // Test
-        Log.i("DATE", String.valueOf(date.getTime()));
+        Log.i("DATE", String.valueOf(date.getTime())); // Log the data for what's being pumped out into the program
 
         SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String formatted_date = date_format.format(date.getTime());
@@ -46,6 +46,15 @@ public class PasswordGeneratorActivity extends AppCompatActivity {
         Toast.makeText(this, formatted_date, Toast.LENGTH_SHORT).show();
 
         return formatted_date;
+    }
+
+    public String getLength(EditText length_input){
+        String length = length_input.getText().toString();
+
+        Toast.makeText(this, length, Toast.LENGTH_LONG).show();
+        Log.i("LENGTH", length);
+
+        return length;
     }
 
     public String convertDateType(String date){
@@ -59,7 +68,7 @@ public class PasswordGeneratorActivity extends AppCompatActivity {
 
         String month= date.substring(5,7);
         // We need to convert the month into text now
-        switch(month){
+        switch(month){ // I could organize this on shorter lines, but I like to keep clarity
             case "01":
                 month = "Janurary";
                 break;
@@ -111,7 +120,7 @@ public class PasswordGeneratorActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) { // OnCreate is exactly that, on creation.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password_generator);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -133,6 +142,9 @@ public class PasswordGeneratorActivity extends AppCompatActivity {
         final ToggleButton numbers_toggleButton = (ToggleButton) findViewById(R.id.numbers_toggleButton);
         final ToggleButton special_toggleButton = (ToggleButton) findViewById(R.id.lowercase_toggleButton);
 
+        //EditText
+        final EditText length_input = (EditText) findViewById(R.id.length_input);
+
         // Generate Password button *******
         Button generatePassword = (Button) findViewById(R.id.generatePassword_button);
         generatePassword.setOnClickListener(new View.OnClickListener(){
@@ -146,9 +158,20 @@ public class PasswordGeneratorActivity extends AppCompatActivity {
                 if(lowercase_toggleButton.isChecked()==false && uppercase_toggleButton.isChecked()==false
                         && numbers_toggleButton.isChecked()==false && special_toggleButton.isChecked()==false){
                     Snackbar.make(this_view, "Please select at least one condition!", Snackbar.LENGTH_LONG).show();
+
                 }else{
                     String seed_date = convertDateType(date);
                     //Snackbar.make(this_view, seed_date, Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                    String length = getLength(length_input); // Pull down the length as a string
+
+                    // Now we're going to want to take that length and set up another check
+                    if(length.matches("")){
+                        Snackbar.make(this_view, "Please input a valid length.", Snackbar.LENGTH_LONG).show();
+                    }else{
+                        // So we have our Length, we have our seed
+                        // Next step calls for us to call our encryption/generation function followed by
+                        // checking each character in the results and removing any null, nextLine, or spaces
+                    }
                 }
 
 
