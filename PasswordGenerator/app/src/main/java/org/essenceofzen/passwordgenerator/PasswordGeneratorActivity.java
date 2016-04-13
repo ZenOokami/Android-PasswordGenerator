@@ -25,6 +25,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -120,6 +121,27 @@ public class PasswordGeneratorActivity extends AppCompatActivity {
         return seed_date;
     }
 
+    // Let's generate some passwords, yeah?
+    public String generatePassword(String seed_date){
+        String new_password = "";
+
+        String key = "9857516874AByaxijasdfIOJASDiojasdoij8778412989asdfn8912ho87y8123jkashdfzxc8192as;odifj91289o9a8usd9fjo9zuxcjo891j23liniasdfrlguih0asdf0129or8giausdfrgn";
+
+        for(int index=0;index < key.length();index++){
+            int seed_date_value = ((int)seed_date.charAt(index % seed_date.length()));
+            int key_value = ((int)key.charAt(index % key.length()));
+
+            int combined = ((seed_date_value+key_value) % 123);
+
+            char encoded_value = (char)combined;
+            new_password += encoded_value;
+        }
+        // Let's remove all esacpe, null, space, newline, nextline etc.
+        new_password = new_password.replaceAll("(\\r|\\n|\\s|[\\u0000-\\u001f])",""); // this uses regex
+
+        return new_password;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) { // OnCreate is exactly that, on creation.
         super.onCreate(savedInstanceState);
@@ -161,16 +183,18 @@ public class PasswordGeneratorActivity extends AppCompatActivity {
 
         // Generate Password button *******
         Button generatePassword = (Button) findViewById(R.id.generatePassword_button);
+        final TextView generatedPassword = (TextView) findViewById(R.id.generatedPassword);
         generatePassword.setOnClickListener(new View.OnClickListener(){
             public void onClick(View this_view){
                 // Our action
                 String date = getDate();
+                Log.i("GOTdate","Successfully grabbed the date.");
                 // The date is going to be in the format of yyyy-mm-dd hh-mm-ss
                 // What we want to do now is take this, and format it where the spaces and dashes are gone
                 // and we turn mm into an actual month
 
                 if(lowercase_toggleButton.isChecked()==false && uppercase_toggleButton.isChecked()==false
-                        && numbers_toggleButton.isChecked()==false && special_toggleButton.isChecked()==false){
+                        && numbers_toggleButton.isChecked()==false && special_toggleButton.isChecked()==false){ // Can simplify the check with !lowercase_toggleButton.isChecked()
                     Snackbar.make(this_view, "Please select at least one condition!", Snackbar.LENGTH_LONG).show();
 
                 }else{
@@ -179,12 +203,45 @@ public class PasswordGeneratorActivity extends AppCompatActivity {
                     String length = getLength(length_input); // Pull down the length as a string
 
                     // Now we're going to want to take that length and set up another check
-                    if(length.matches("")){
-                        Snackbar.make(this_view, "Please input a valid length.", Snackbar.LENGTH_LONG).show();
+                    //todo: Fix the empty length generator
+                    int length_number = Integer.parseInt(length);
+                    if(length.matches("") || length_number<5 || length_number>10 ){
+                        Snackbar.make(this_view, "Please input a valid length: 5 to 10", Snackbar.LENGTH_LONG).show();
                     }else{
                         // So we have our Length, we have our seed
                         // Next step calls for us to call our encryption/generation function followed by
                         // checking each character in the results and removing any null, nextLine, or spaces
+
+                        String password = generatePassword(seed_date); // We have our full password source
+                        String final_password = "";
+                        Log.i("VALIDlength","Valid length foudnd.");
+
+                        // Now we have to build our last password from the user selection choice:
+                        // replaceAll uses Regex
+                        if(lowercase_toggleButton.isChecked()== false){
+                            // If lowercase is NOT checked: Remove all lowercase characters
+                            password = password.replaceAll("[a-z]","");
+                        }
+                        if(uppercase_toggleButton.isChecked()==false){
+                            // If uppercase is NOT checked: Remove all uppercase characters
+                            password = password.replaceAll("[A-Z]","");
+                        }
+                        if(numbers_toggleButton.isChecked()==false){
+                            // If numbers is NOT checked: Remove all numbers
+                            password = password.replaceAll("[0-9]","");
+                        }
+                        if(special_toggleButton.isChecked()==false){
+                            // If specials is NOT checked: Remove all special characters
+                            password = password.replaceAll("[\\u0021-\\u002F]",""); // unicode
+                        }
+
+                        // Now, we have to check to see how long our password can be
+                        for(int index=0; index < length_number; index++ ){
+                            final_password += password.charAt(index);
+                        }
+
+                        // Set the password text to the new password
+                        generatedPassword.setText(final_password);
                     }
                 }
             }
