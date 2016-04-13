@@ -24,6 +24,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -136,11 +137,24 @@ public class PasswordGeneratorActivity extends AppCompatActivity {
             }
         });
 
+
+        //Twitter Image Button
+        final ImageView twitterHex = (ImageView) findViewById(R.id.twitterHex);
+        twitterHex.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View this_view){
+                // Show snackbar for the twitter
+                Snackbar.make(this_view, "Follow @EssenceOfZen for development on this project",
+                        Snackbar.LENGTH_LONG).show();
+            }
+        });
+
+
         //Toggle buttons
         final ToggleButton lowercase_toggleButton = (ToggleButton) findViewById(R.id.lowercase_toggleButton);
         final ToggleButton uppercase_toggleButton = (ToggleButton) findViewById(R.id.uppercase_toggleButton);
         final ToggleButton numbers_toggleButton = (ToggleButton) findViewById(R.id.numbers_toggleButton);
         final ToggleButton special_toggleButton = (ToggleButton) findViewById(R.id.lowercase_toggleButton);
+
 
         //EditText
         final EditText length_input = (EditText) findViewById(R.id.length_input);
@@ -173,8 +187,6 @@ public class PasswordGeneratorActivity extends AppCompatActivity {
                         // checking each character in the results and removing any null, nextLine, or spaces
                     }
                 }
-
-
             }
         });
 
