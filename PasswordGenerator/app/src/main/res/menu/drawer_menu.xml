@@ -9,8 +9,14 @@
 
         <item
             android:id="@+id/About_navigation"
-            android:title="Password Generation"
+            android:title="About"
             android:icon="@android:drawable/ic_dialog_info"
+            ></item>
+
+        <item
+            android:id="@+id/options_navigation"
+            android:title="Options"
+            android:icon="@android:drawable/ic_menu_edit"
             ></item>
 
     </group>
