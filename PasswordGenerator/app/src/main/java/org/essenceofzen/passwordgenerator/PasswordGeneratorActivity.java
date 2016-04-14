@@ -223,7 +223,7 @@ public class PasswordGeneratorActivity extends AppCompatActivity {
         final ToggleButton lowercase_toggleButton = (ToggleButton) findViewById(R.id.lowercase_toggleButton);
         final ToggleButton uppercase_toggleButton = (ToggleButton) findViewById(R.id.uppercase_toggleButton);
         final ToggleButton numbers_toggleButton = (ToggleButton) findViewById(R.id.numbers_toggleButton);
-        final ToggleButton special_toggleButton = (ToggleButton) findViewById(R.id.lowercase_toggleButton);
+        final ToggleButton special_toggleButton = (ToggleButton) findViewById(R.id.specials_toggleButton);
 
 
         //EditText
@@ -252,15 +252,15 @@ public class PasswordGeneratorActivity extends AppCompatActivity {
                     String length = getLength(length_input); // Pull down the length as a string
 
                     // Now we're going to want to take that length and set up another check
-                    //todo: Fix the empty length generator
-                    int length_number = Integer.parseInt(length);
                     if(length.matches("")){
                         //Snackbar.make(this_view, "Please input a valid length: 5 to 10", Snackbar.LENGTH_LONG).show();
-                        Toast.makeText(PasswordGeneratorActivity.this, "Please input a valid length: 5 to 10", Toast.LENGTH_LONG);
+                        Toast.makeText(PasswordGeneratorActivity.this, "Please input a valid length: 5 to 12", Toast.LENGTH_LONG).show();
                     }else{
+                        int length_number = Integer.parseInt(length);
                         // Numbers were placed, setup our limits
                         if(length_number < 5 || length_number > 12){
-                            Snackbar.make(this_view, "Please input a valid length: 5 to 10", Snackbar.LENGTH_LONG).show();
+                            //Snackbar.make(this_view, "Please input a valid length: 5 to 10", Snackbar.LENGTH_LONG).show();
+                            Toast.makeText(PasswordGeneratorActivity.this, "Please input a valid length: 5 to 12", Toast.LENGTH_LONG).show();
                         }else{
                             // So we have our Length, we have our seed
                             // Next step calls for us to call our encryption/generation function followed by
@@ -276,19 +276,25 @@ public class PasswordGeneratorActivity extends AppCompatActivity {
                             if(!lowercase_toggleButton.isChecked()){
                                 // If lowercase is NOT checked: Remove all lowercase characters
                                 password = password.replaceAll("[a-z]","");
+                                Log.i("LOWERS REMOVED", password);
                             }
                             if(!uppercase_toggleButton.isChecked()){
                                 // If uppercase is NOT checked: Remove all uppercase characters
                                 password = password.replaceAll("[A-Z]","");
+                                Log.i("UPPERS REMOVED", password);
                             }
                             if(!numbers_toggleButton.isChecked()){
+                                Log.i("STARTING SPECIAL", "Doing numbers");
                                 // If numbers is NOT checked: Remove all numbers
                                 password = password.replaceAll("[0-9]","");
+                                Log.i("NUMBERS REMOVED", password);
                             }
                             if(!special_toggleButton.isChecked()){
+                                Log.i("STARTING SPECIAL", "Doing specials");
                                 // If specials is NOT checked: Remove all special characters
                                 //todo: Get this working - it works in pure java, but not in android studio for some reason
                                 password = password.replaceAll("[\\u0021-\\u002F]|[\\u003A-\\u0040]|[\\u005B-\\u0060]|[\\u007B-\\u007F]",""); // unicode
+                                Log.i("SPECIALS REMOVED", password);
                             }
                             Log.i("FINALPASS", password);
 
