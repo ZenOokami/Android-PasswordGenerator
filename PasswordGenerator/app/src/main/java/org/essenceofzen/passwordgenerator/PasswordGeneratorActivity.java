@@ -132,7 +132,9 @@ public class PasswordGeneratorActivity extends AppCompatActivity {
 
         String key = "9857516874AByaxijasdfIOJASDiojasdoij8778412989asdfn8912ho87y8123jkashdfzxc8192as;odifj91289o9a8usd9fjo9zuxcjo891j23liniasdfrlguih0asdf0129or8giausdfrgn";
 
+        // Do calculations how ever many times as the length of the key
         for(int index=0;index < key.length();index++){
+            // Grab a value by taking the index and doing the modulo of it and that of the length)
             int seed_date_value = ((int)seed_date.charAt(index % seed_date.length()));
             int key_value = ((int)key.charAt(index % key.length()));
 
