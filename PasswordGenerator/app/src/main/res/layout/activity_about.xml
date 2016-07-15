@@ -33,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:context="org.essenceofzen.passwordgenerator.About">
+        tools:context=".AboutActivity">
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
@@ -52,12 +52,14 @@
         <include layout="@layout/content_about" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
+            android:id="@+id/fab_password_gen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
-            android:src="@android:drawable/ic_dialog_email" />
+            android:tint="#ffffff"
+            android:backgroundTint="#f61f23"
+            android:src="@android:drawable/ic_lock_lock" />
 
     </android.support.design.widget.CoordinatorLayout>
 

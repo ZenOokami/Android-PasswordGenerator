@@ -9,28 +9,73 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="org.essenceofzen.passwordgenerator.About"
+    tools:context=".AboutActivity"
     tools:showIn="@layout/activity_about"
     android:background="@drawable/phone_flora_fade2_blue"
     >
 
-    <TextView
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/version"
-        android:textStyle="bold"
-        android:textSize="30dp"
-        android:text="@string/app_version"
-        android:layout_centerHorizontal="true"
-        />
+        android:id="@+id/frame_version"
+        android:background="#f5f5f5"
+        android:elevation="10dp"
+        >
 
-    <TextView
-        android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/version"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:text="@string/app_version"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal|top" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:text="Created by ZenOokami"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="30dp"
+            />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/version"
-        android:textSize="25dp"
-        android:text="Created by ZenOokami"
-        android:layout_centerHorizontal="true"
-        />
+        android:layout_below="@+id/frame_version"
+        android:layout_marginTop="20dp"
+        android:background="#f5f5f5"
+        android:elevation="10dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:layout_gravity="center|top"
+            android:text="Planned Features:"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_gravity="top"
+            android:layout_marginTop="20dp"
+            android:text="
+            + Improve Generation Algorithm
+            + Local Secure Databse
+            + Local Statistics
+            + Dedicated Animation Effects
+            "
+            />
+
+    </FrameLayout>
+
 
 </RelativeLayout>
