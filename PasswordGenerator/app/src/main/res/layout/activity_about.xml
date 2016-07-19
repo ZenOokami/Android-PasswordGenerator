@@ -11,8 +11,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
+        >
 
-        />
+        <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_password_gen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:tint="#ffffff"
+        app:backgroundTint="#f61f23"
+        android:src="@android:drawable/ic_lock_lock" />
+
+    </FrameLayout>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/left_drawer"
@@ -51,15 +62,6 @@
 
         <include layout="@layout/content_about" />
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab_password_gen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/fab_margin"
-            android:tint="#ffffff"
-            android:backgroundTint="#f61f23"
-            android:src="@android:drawable/ic_lock_lock" />
 
     </android.support.design.widget.CoordinatorLayout>
 

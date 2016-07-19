@@ -66,13 +66,8 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:layout_gravity="top"
-            android:layout_marginTop="20dp"
-            android:text="
-            + Improve Generation Algorithm
-            + Local Secure Databse
-            + Local Statistics
-            + Dedicated Animation Effects
-            "
+            android:layout_marginTop="40dp"
+            android:text="Improve Generation Algorithm; Local Secure Database; Local Statistics; Dedicated Animation Effects"
             />
 
     </FrameLayout>

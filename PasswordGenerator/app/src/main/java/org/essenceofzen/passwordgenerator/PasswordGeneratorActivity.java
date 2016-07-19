@@ -191,14 +191,14 @@ public class PasswordGeneratorActivity extends AppCompatActivity {
 
 
         //Twitter Image Button
-        final ImageView twitterHex = (ImageView) findViewById(R.id.twitterHex);
-        twitterHex.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View this_view){
-                // Show snackbar for the twitter
-                Snackbar.make(this_view, "Follow @EssenceOfZen for development on this project",
-                        Snackbar.LENGTH_LONG).show();
-            }
-        });
+//        final ImageView twitterHex = (ImageView) findViewById(R.id.twitterHex);
+//        twitterHex.setOnClickListener(new View.OnClickListener(){
+//            public void onClick(View this_view){
+//                // Show snackbar for the twitter
+//                Snackbar.make(this_view, "Follow @EssenceOfZen for development on this project",
+//                        Snackbar.LENGTH_LONG).show();
+//            }
+//        });
 
 
 //        // Navigation buttons
