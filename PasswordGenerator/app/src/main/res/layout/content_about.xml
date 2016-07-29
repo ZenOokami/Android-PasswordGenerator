@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/frame_version"
         android:background="#f5f5f5"
-        android:elevation="10dp"
+        android:elevation="5dp"
         >
 
         <TextView
@@ -46,10 +46,11 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/planned_features"
         android:layout_below="@+id/frame_version"
         android:layout_marginTop="20dp"
         android:background="#f5f5f5"
-        android:elevation="10dp"
+        android:elevation="5dp"
         >
 
         <TextView
@@ -68,6 +69,37 @@
             android:layout_gravity="top"
             android:layout_marginTop="40dp"
             android:text="Improve Generation Algorithm; Local Secure Database; Local Statistics; Dedicated Animation Effects"
+            />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/disclaimer"
+        android:layout_below="@+id/planned_features"
+        android:layout_marginTop="20dp"
+        android:background="#f5f5f5"
+        android:elevation="5dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:layout_gravity="center|top"
+            android:textColor="#ff0000"
+            android:text="Disclaimer:"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_gravity="top"
+            android:layout_marginTop="40dp"
+            android:text="This is not to be used as a secure generator at the moment. This project stemmed from a class project that later turned out to be a test at long-term app development. As such we'll be updating this app to the point where it will one day be a 'proper' application."
             />
 
     </FrameLayout>

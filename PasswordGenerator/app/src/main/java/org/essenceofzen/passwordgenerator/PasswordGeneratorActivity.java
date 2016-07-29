@@ -11,7 +11,9 @@
 * */
 package org.essenceofzen.passwordgenerator;
 
+import android.content.ClipData;
 import android.content.Intent;
+import android.content.ClipboardManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -146,6 +148,12 @@ public class PasswordGeneratorActivity extends AppCompatActivity {
         new_password = new_password.replaceAll("(\\r|\\n|\\s|[\\u0000-\\u001f])",""); // this uses regex
 
         return new_password;
+    }
+
+    public void copyToClipBoard(ClipData clip_data){
+        Log.i("CLIPBOARD","Attempting to copy to clipboard");
+        ClipboardManager clipboard_manager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        clipboard_manager.setPrimaryClip(clip_data);
     }
 
     public static String randomize(String password, int length){ // This gives us random chars after the final version of the password has been formed
@@ -305,6 +313,12 @@ public class PasswordGeneratorActivity extends AppCompatActivity {
 
                             // Set the password text to the new password
                             generatedPassword.setText(final_password);
+
+                            //todo: Create a clipboard method, and call it here.
+                            ClipData clip_data = ClipData.newPlainText(final_password, final_password);
+                            copyToClipBoard(clip_data);
+                            Log.i("CLIPBOARD","Copy complete.");
+                            Toast.makeText(PasswordGeneratorActivity.this,"Password copied to Clipboard", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
